@@ -1,0 +1,266 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:include="layout/layout :: layout">
+<head th:include="layout/layout :: header">
+    <title id="pageTitle">BẢNG TÍNH TOÁN HỆ SỐ PHỨC TẠP KỸ THUẬT-CÔNG NGHỆ</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="page-content" th:fragment="content">
+    <script src="/view/report/technology-comprehension-calculation.js"
+            type="text/javascript"></script>
+    <div ng-controller="ctr-technologyComprehensionCalculation" id="contentMain"
+         class="ng-cloak">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-plus font-orange"></i> <span
+                        class="caption-subject font-orange bold uppercase"
+                        translate="hust.technologyComprehensionCalculation.title"> </span>
+                </div>
+            </div>
+
+            <div class="portlet-body form">
+                <form name="frm_technologyComprehensionCalculation" class="form-horizontal form-bordered"
+                      method="post" ng-validate="validationOptions">
+                    <div class="form-body">
+                        <div class="tab-content" style="padding-top: 0">
+                            <div class="tab-pane active" id="tab_5_1">
+                                <fieldset class="fieldset-primary" style="padding: 0.3em 0.2em 0.2em 0.3em !important;" ng-disabled="stateForm !== 'DEFAULT'">
+                                    <legend class="lengend-primary">
+                                        <b translate="hust.technologyComprehensionCalculation.label.titleSearch"></b>
+                                    </legend>
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                <label class="control-label ">
+                                                    <label
+                                                            translate="hust.technologyComprehensionCalculation.label.heThongPhanTan">
+                                                    </label>
+                                                </label>
+                                                <ui-select ng-model="model.heThongPhanTan" class=""
+                                                           style="width:100%;"
+                                                           name="heThongPhanTan">
+                                                    <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                    <ui-select-choices
+                                                            repeat="x.code as x in likert | filter:$select.search">
+                                                        <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                </ui-select>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <label class="control-label ">
+                                                    <label
+                                                            translate="hust.technologyComprehensionCalculation.label.dapUngTucThoi">
+                                                    </label>
+                                                </label>
+                                                <ui-select ng-model="model.dapUngTucThoi" class=""
+                                                           style="width:100%;"
+                                                           name="dapUngTucThoi">
+                                                    <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                    <ui-select-choices
+                                                            repeat="x.code as x in likert | filter:$select.search">
+                                                        <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                </ui-select>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <label class="control-label ">
+                                                    <label
+                                                            translate="hust.technologyComprehensionCalculation.label.suDungTrucTuyen">
+                                                    </label>
+                                                </label>
+                                                <ui-select ng-model="model.suDungTrucTuyen" class=""
+                                                           style="width:100%;"
+                                                           name="suDungTrucTuyen">
+                                                    <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                    <ui-select-choices
+                                                            repeat="x.code as x in likert | filter:$select.search">
+                                                        <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                </ui-select>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <label class="control-label ">
+                                                    <label
+                                                            translate="hust.technologyComprehensionCalculation.label.xuLyBenTrong">
+                                                    </label>
+                                                </label>
+                                                <ui-select ng-model="model.xuLyBenTrong" class=""
+                                                           style="width:100%;"
+                                                           name="xuLyBenTrong">
+                                                    <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                    <ui-select-choices
+                                                            repeat="x.code as x in likert | filter:$select.search">
+                                                        <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                <label class="control-label ">
+                                                    <label
+                                                            translate="hust.technologyComprehensionCalculation.label.taiSuDung">
+                                                    </label>
+                                                </label>
+                                                <ui-select ng-model="model.taiSuDung" class=""
+                                                           style="width:100%;"
+                                                           name="taiSuDung">
+                                                    <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                    <ui-select-choices
+                                                            repeat="x.code as x in likert | filter:$select.search">
+                                                        <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                </ui-select>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <label class="control-label ">
+                                                    <label
+                                                            translate="hust.technologyComprehensionCalculation.label.deCaiDat">
+                                                    </label>
+                                                </label>
+                                                <ui-select ng-model="model.deCaiDat" class=""
+                                                           style="width:100%;"
+                                                           name="deCaiDat">
+                                                    <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                    <ui-select-choices
+                                                            repeat="x.code as x in likert | filter:$select.search">
+                                                        <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                </ui-select>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <label class="control-label ">
+                                                    <label
+                                                            translate="hust.technologyComprehensionCalculation.label.deSuDung">
+                                                    </label>
+                                                </label>
+                                                <ui-select ng-model="model.deSuDung" class=""
+                                                           style="width:100%;"
+                                                           name="deSuDung">
+                                                    <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                    <ui-select-choices
+                                                            repeat="x.code as x in likert | filter:$select.search">
+                                                        <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                </ui-select>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <label class="control-label ">
+                                                    <label
+                                                            translate="hust.technologyComprehensionCalculation.label.khaNangChuyenDoi">
+                                                    </label>
+                                                </label>
+                                                <ui-select ng-model="model.khaNangChuyenDoi" class=""
+                                                           style="width:100%;"
+                                                           name="khaNangChuyenDoi">
+                                                    <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                    <ui-select-choices
+                                                            repeat="x.code as x in likert | filter:$select.search">
+                                                        <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                <label class="control-label ">
+                                                    <label
+                                                            translate="hust.technologyComprehensionCalculation.label.deThayDoi">
+                                                    </label>
+                                                </label>
+                                                <ui-select ng-model="model.deThayDoi" class=""
+                                                           style="width:100%;"
+                                                           name="deThayDoi">
+                                                    <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                    <ui-select-choices
+                                                            repeat="x.code as x in likert | filter:$select.search">
+                                                        <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                </ui-select>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <label class="control-label ">
+                                                    <label
+                                                            translate="hust.technologyComprehensionCalculation.label.suDungDongThoi">
+                                                    </label>
+                                                </label>
+                                                <ui-select ng-model="model.suDungDongThoi" class=""
+                                                           style="width:100%;"
+                                                           name="suDungDongThoi">
+                                                    <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                    <ui-select-choices
+                                                            repeat="x.code as x in likert | filter:$select.search">
+                                                        <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                </ui-select>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <label class="control-label ">
+                                                    <label
+                                                            translate="hust.technologyComprehensionCalculation.label.baoMatDacBiet">
+                                                    </label>
+                                                </label>
+                                                <ui-select ng-model="model.baoMatDacBiet" class=""
+                                                           style="width:100%;"
+                                                           name="deSuDung">
+                                                    <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                    <ui-select-choices
+                                                            repeat="x.code as x in likert | filter:$select.search">
+                                                        <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                </ui-select>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <label class="control-label ">
+                                                    <label
+                                                            translate="hust.technologyComprehensionCalculation.label.truyCapTrucTiep">
+                                                    </label>
+                                                </label>
+                                                <ui-select ng-model="model.truyCapTrucTiep" class=""
+                                                           style="width:100%;"
+                                                           name="truyCapTrucTiep">
+                                                    <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                    <ui-select-choices
+                                                            repeat="x.code as x in likert | filter:$select.search">
+                                                        <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-3">
+                                                <label class="control-label ">
+                                                    <label
+                                                            translate="hust.technologyComprehensionCalculation.label.daoTaoDacBiet">
+                                                    </label>
+                                                </label>
+                                                <ui-select ng-model="model.daoTaoDacBiet" class=""
+                                                           style="width:100%;"
+                                                           name="daoTaoDacBiet">
+                                                    <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                    <ui-select-choices
+                                                            repeat="x.code as x in likert | filter:$select.search">
+                                                        <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                        <!--Button-->
+                                        <div class="form-actions" style="padding: 7px;border-top:none">
+                                            <div class="col-md-12" style="text-align: center;">
+                                                <button type="button" class="btn btn-primary" ng-click="actionSearch()">
+                                                    <i class="fa fa-search"></i> <span
+                                                        translate="hust.technologyComprehensionCalculation.button.toExcel"></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

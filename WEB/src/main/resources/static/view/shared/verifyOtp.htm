@@ -1,0 +1,123 @@
+<div class="modal-header" style="height: 50px;background-color: #DD011DFF;color: white">
+	<!--<button type="button" class="close red" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">×</button>-->
+	<h4 class="modal-title" id="modal-title">Xác thực OTP</h4>
+</div>
+<div class="modal-body" id="modal-body" style="padding: 5px;">
+	<div style="max-height: 200px; overflow: auto">
+		<div class="form-group ">
+			<div style="display: flex">
+				<input type="text" class="form-control" placeholder="OTP" id="otp" ng-model="otpCode" maxlength="15" style="width: 90%;height: 40px;" /><span id="timer" style="padding-left: 10px;padding-top: 10px"></span>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<a ng-click="confirm()" class="btn btn-sm" style="background-color: #DD011DFF; color: white"> <i class="fa fa-check-circle"></i> Xác
+			nhận
+		</a>
+	</div>
+	<script>
+	var counter = 0;
+	var countDown;
+	var interval = null;
+	function startTimer(duration, display) {
+		var timer = duration, minutes, seconds;
+		interval = setInterval(function() {
+			minutes = parseInt(timer / 60, 10)
+			seconds = parseInt(timer % 60, 10);
+
+			minutes = minutes < 10 ? "0" + minutes : minutes;
+			seconds = seconds < 10 ? "0" + seconds : seconds;
+
+			display.textContent = minutes + ":" + seconds;
+
+			if (--timer <= 0) {
+				// window.location.replace('/account/login')
+				window.location.replace('/testForm')
+			}
+		}, 1000);
+	}
+
+	function canceltime() {
+		clearInterval(interval);
+		document.getElementById('expire').click();
+	}
+
+	if (counter == 0) {
+		var oneMinute = 120, display = document.querySelector('#timer');
+		countDown = startTimer(oneMinute, display);
+		counter++;
+	} else {
+		counter++;
+	}
+</script>
+	<style>
+.list-shop {
+	
+}
+
+.list-shop .list-simple.ext-1.mt-list-container ul>.mt-list-item {
+	padding: 2px;
+	border-color: #90ffce #409fff #e7ecf1;
+}
+
+.list-shop .list-simple.ext-1.mt-list-container ul>.mt-list-item>.list-icon-container-mod {
+	padding-top: 2px;
+}
+
+.list-shop .list-simple.mt-list-container ul>.mt-list-item>.list-item-content {
+	padding: 0 5px 0 25px;
+}
+
+.list-shop .list-simple.mt-list-container ul>.mt-list-item>.list-item-content>h6>a:hover {
+	color: #DD011DFF;
+}
+
+.list-shop .list-simple.mt-list-container ul>.mt-list-item:hover>.list-item-content>h6>a {
+	color: #DD011DFF;
+}
+
+.list-shop .list-simple.ext-1.mt-list-container ul>.mt-list-item:hover {
+	border-color: #90ffce #DD011DFF #e7ecf1;
+	cursor: pointer;
+}
+
+.list-shop .list-simple.ext-1.mt-list-container ul>.mt-list-item:hover i {
+	color: #DD011DFF;
+}
+
+.list-shop .list-simple.ext-1.mt-list-container ul>.mt-list-item.item-checked  i {
+	color: #DD011DFF;
+}
+
+.list-shop  .list-simple.ext-1.mt-list-container ul>.mt-list-item.item-checked {
+	border-color: #90ffce #DD011DFF #e7ecf1;
+}
+
+.list-shop  .list-simple.mt-list-container ul>.mt-list-item.item-checked>.list-item-content>h6>a {
+	color: #DD011DFF;
+}
+
+#partitioned {
+	padding-left: 15px;
+	letter-spacing: 42px;
+	border: 0;
+	background-image: linear-gradient(to left, black 70%, rgba(255, 255, 255, 0) 0%);
+	background-position: bottom;
+	background-size: 50px 1px;
+	background-repeat: repeat-x;
+	background-position-x: 35px;
+	width: 220px;
+	min-width: 220px;
+}
+
+#divInner {
+	left: 0;
+	position: sticky;
+}
+
+#divOuter {
+	width: 190px;
+	overflow: hidden
+}
+</style>
+</div>

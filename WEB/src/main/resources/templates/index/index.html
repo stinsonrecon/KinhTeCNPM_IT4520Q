@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:include="layout/layout :: layout">
+<head th:include="layout/layout :: header">
+    <title id="pageTitle">TRANG CHỦ</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="page-content" th:fragment="content">
+    <div id="contentMain" class="ng-cloak">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-plus font-orange"></i> <span
+                        class="caption-subject font-orange bold uppercase"
+                        translate="hust.index.title"> </span>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="starter-template">
+                    <h1>Hello world</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

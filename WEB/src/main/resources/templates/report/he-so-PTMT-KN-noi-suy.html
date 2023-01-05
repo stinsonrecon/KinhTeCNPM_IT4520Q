@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:include="layout/layout :: layout">
+<head th:include="layout/layout :: header">
+    <title id="pageTitle">HỆ SỐ PTMT-KN-NỘI SUY</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="page-content" th:fragment="content">
+    <script src="/view/report/he-so-PTMT-KN-noi-suy.js"
+            type="text/javascript"></script>
+    <div ng-controller="ctr-heSo" id="contentMain"
+         class="ng-cloak">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-plus font-orange"></i> <span
+                        class="caption-subject font-orange bold uppercase"
+                        translate="hust.heSo.title"> </span>
+                </div>
+            </div>
+
+            <div class="portlet-body form">
+                <form name="frm_heSo" class="form-horizontal form-bordered"
+                      method="post" ng-validate="validationOptions">
+                    <div class="form-body">
+                        <div class="tab-content" style="padding-top: 0">
+                            <div class="tab-pane active" id="tab_5_1">
+                                <fieldset class="fieldset-primary" style="padding: 0.3em 0.2em 0.2em 0.3em !important;" ng-disabled="stateForm !== 'DEFAULT'">
+                                    <legend class="lengend-primary">
+                                        <b translate="hust.heSo.label.titleSearch"></b>
+                                    </legend>
+                                    <!--Đánh giá cho từng thành viên-->
+                                    <div class="form-group" id="memberStat" ng-hide="!hiddenTree">
+                                        <uib-accordion close-others="true">
+                                            <div uib-accordion-group="" class="panel-default"
+                                                 heading="{{memberStat}}" is-open="true">
+                                                <div class="form-group">
+                                                    <div class="form-group">
+                                                        <!--Áp dụng quy trình phát triển phần mềm theo mẫu RUP-->
+                                                        <div class="col-md-4">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.heSo.label.followOrder">
+                                                                </label>
+                                                                <span style="color: red">(*)</span>
+                                                            </label>
+                                                            <input type="number" class="form-control"
+                                                                   maxlength="11"
+                                                                   min="0"
+                                                                   max="5"
+                                                                   step="any"
+                                                                   ng-model="model.followOrder"
+                                                                   name="followOrder"
+                                                                   id="followOrder"
+                                                                   style="padding-left: 5px; width: 100%;"/>
+                                                        </div>
+
+                                                        <!--Có kinh nghiệm về ứng dụng tương tự-->
+                                                        <div class="col-md-4">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.heSo.label.experience">
+                                                                </label>
+                                                                <span style="color: red">(*)</span>
+                                                            </label>
+                                                            <input type="number" class="form-control"
+                                                                   maxlength="11"
+                                                                   min="0"
+                                                                   max="5"
+                                                                   ng-model="model.experience"
+                                                                   name="experience"
+                                                                   id="experience"
+                                                                   style="padding-left: 5px; width: 100%;"/>
+                                                        </div>
+
+                                                        <!--Có kinh nghiệm về hướng đối tượng-->
+                                                        <div class="col-md-4">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.heSo.label.oopExperience">
+                                                                </label>
+                                                                <span style="color: red">(*)</span>
+                                                            </label>
+                                                            <input type="number" class="form-control"
+                                                                   maxlength="11"
+                                                                   min="0"
+                                                                   max="5"
+                                                                   ng-model="model.oopExperience"
+                                                                   name="oopExperience"
+                                                                   id="oopExperience"
+                                                                   style="padding-left: 5px; width: 100%;"/>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <!--Có khả năng lãnh đạo Nhóm-->
+                                                        <div class="col-md-4">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.heSo.label.leaderExperience">
+                                                                </label>
+                                                                <span style="color: red">(*)</span>
+                                                            </label>
+                                                            <input type="number" class="form-control"
+                                                                   maxlength="11"
+                                                                   min="0"
+                                                                   max="5"
+                                                                   ng-model="model.leaderExperience"
+                                                                   name="leaderExperience"
+                                                                   id="leaderExperience"
+                                                                   style="padding-left: 5px; width: 100%;"/>
+                                                        </div>
+
+                                                        <!--Tính chất năng động-->
+                                                        <div class="col-md-4">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.heSo.label.motivate">
+                                                                </label>
+                                                                <span style="color: red">(*)</span>
+                                                            </label>
+                                                            <input type="number" class="form-control"
+                                                                   maxlength="11"
+                                                                   min="0"
+                                                                   max="5"
+                                                                   ng-model="model.motivate"
+                                                                   name="motivate"
+                                                                   id="motivate"
+                                                                   style="padding-left: 5px; width: 100%;"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </uib-accordion>
+                                    </div>
+
+                                    <!--Đánh giá chung cho Dự án-->
+                                    <div class="form-group" id="projectStat" ng-hide="!hiddenTree">
+                                        <uib-accordion close-others="true">
+                                            <div uib-accordion-group="" class="panel-default"
+                                                 heading="{{projectStat}}" is-open="true">
+                                                <div class="form-group">
+                                                    <div class="form-group">
+                                                        <!--Độ ổn định của các yêu cầu-->
+                                                        <div class="col-md-4">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.heSo.label.stable">
+                                                                </label>
+                                                                <span style="color: red">(*)</span>
+                                                            </label>
+                                                            <input type="number" class="form-control"
+                                                                   maxlength="11"
+                                                                   min="0"
+                                                                   max="5"
+                                                                   ng-model="model.stable"
+                                                                   name="stable"
+                                                                   id="stable"
+                                                                   style="padding-left: 5px; width: 100%;"/>
+                                                        </div>
+
+                                                        <!--Sử dụng các nhân viên làm bán thời gian-->
+                                                        <div class="col-md-4">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.heSo.label.partTimeUsage">
+                                                                </label>
+                                                                <span style="color: red">(*)</span>
+                                                            </label>
+                                                            <input type="number" class="form-control"
+                                                                   maxlength="11"
+                                                                   min="0"
+                                                                   max="5"
+                                                                   ng-model="model.partTimeUsage"
+                                                                   name="partTimeUsage"
+                                                                   id="partTimeUsage"
+                                                                   style="padding-left: 5px; width: 100%;"/>
+                                                        </div>
+
+                                                        <!--Dùng ngôn ngữ lập trình loại khó-->
+                                                        <div class="col-md-4">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.heSo.label.hardCode">
+                                                                </label>
+                                                                <span style="color: red">(*)</span>
+                                                            </label>
+                                                            <input type="number" class="form-control"
+                                                                   maxlength="11"
+                                                                   min="0"
+                                                                   max="5"
+                                                                   ng-model="model.hardCode"
+                                                                   name="hardCode"
+                                                                   id="hardCode"
+                                                                   style="padding-left: 5px; width: 100%;"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </uib-accordion>
+                                    </div>
+
+                                    <!--Button-->
+                                    <div class="form-actions" style="padding: 7px;border-top:none">
+                                        <div class="col-md-12" style="text-align: center;">
+                                            <button type="button" class="btn btn-primary" ng-click="actionSearch()">
+                                                <i class="fa fa-search"></i> <span
+                                                    translate="hust.heSo.button.toExcel"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

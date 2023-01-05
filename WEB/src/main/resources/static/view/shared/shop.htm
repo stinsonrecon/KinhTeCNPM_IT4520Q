@@ -1,0 +1,90 @@
+<div class="modal-header" style="height: 50px">
+	<!-- <button type="button" class="close red" data-dismiss="modal"
+		aria-hidden="true" ng-click="cancel()">×</button> -->
+	<h4 class="modal-title" id="modal-title">Chọn cửa hàng</h4>
+</div>
+<div class="modal-body" id="modal-body" style="padding: 5px;">
+		<div class="mt-element-list list-shop"
+			style="max-height: 200px; overflow: auto">
+
+			<div class="mt-list-container list-simple ext-1">
+				<ul>
+					<li class="mt-list-item" ng-repeat="s in shops"
+						ng-click="choose(s,$index)"
+						ng-class="{true:'item-checked', false:''}[$index==indexchecked]">
+						<div class="list-icon-container list-icon-container-mod">
+							<i
+								ng-class="{true:'fa fa-check-circle', false:'fa fa-circle-thin'}[$index==indexchecked]"></i>
+						</div>
+						<div class="list-item-content">
+							<h6 class="uppercase" style="margin: 5px;">
+								<a href="javascript:;">{{s.shopCode}} - {{s.shopName}}</a>
+							</h6>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+</div>
+<div class="modal-footer">
+	<a ng-click="next()" class="btn btn-sm" style="background-color: #DD011DFF; color: black" href="javascript:;"
+		ng-disabled="indexchecked<0"> <i class="fa fa-check-circle"></i>
+		Tiếp tục
+	</a>
+</div>
+
+<style>
+.list-shop {
+	
+}
+
+.list-shop .list-simple.ext-1.mt-list-container ul>.mt-list-item {
+	padding: 2px;
+	border-color: #90ffce #409fff #e7ecf1;
+}
+
+.list-shop .list-simple.ext-1.mt-list-container ul>.mt-list-item>.list-icon-container-mod
+	{
+	padding-top: 2px;
+}
+
+.list-shop .list-simple.mt-list-container ul>.mt-list-item>.list-item-content
+	{
+	padding: 0 5px 0 25px;
+}
+
+.list-shop .list-simple.mt-list-container ul>.mt-list-item>.list-item-content>h6>a:hover
+	{
+	color: #DD011DFF;
+}
+
+.list-shop .list-simple.mt-list-container ul>.mt-list-item:hover>.list-item-content>h6>a
+	{
+	color: #DD011DFF;
+}
+
+.list-shop .list-simple.ext-1.mt-list-container ul>.mt-list-item:hover {
+	border-color: #90ffce #DD011DFF #e7ecf1;
+	cursor: pointer;
+}
+
+.list-shop .list-simple.ext-1.mt-list-container ul>.mt-list-item:hover i
+	{
+	color: #DD011DFF;
+}
+
+.list-shop .list-simple.ext-1.mt-list-container ul>.mt-list-item.item-checked  i
+	{
+	color: #DD011DFF;
+}
+
+.list-shop  .list-simple.ext-1.mt-list-container ul>.mt-list-item.item-checked
+	{
+	border-color: #90ffce #DD011DFF #e7ecf1;
+}
+
+.list-shop  .list-simple.mt-list-container ul>.mt-list-item.item-checked>.list-item-content>h6>a
+	{
+	color: #DD011DFF;
+}
+</style>

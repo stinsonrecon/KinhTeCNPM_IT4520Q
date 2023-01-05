@@ -1,0 +1,1 @@
+package vn.com.core.core.service;//package com.fis.fw.core.service;////import com.fis.fw.common.generics.GenericService;//import com.fis.fw.core.entity.LogSession;////public interface LogSessionService extends GenericService<LogSession,Integer> {//    void updateSessionLog(Integer userId, Integer sessionId, String ipAddress, String accessToken) throws Exception;//}

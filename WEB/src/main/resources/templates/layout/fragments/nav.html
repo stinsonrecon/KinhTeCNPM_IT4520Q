@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<div class="page-sidebar navbar-collapse collapse " th:fragment="nav" ng-controller="ctrl-navfragment">
+		<div style="margin-top: 6px;padding: 5px">
+			<input type="text" class="form-control"
+				   ng-model="searchInput"
+				   ng-change="onSearchMenu()"
+				   ng-blur="onSearchMenu()"
+				   placeholder="Tìm nhanh menu..."
+				   data-toggle="tooltip" data-placement="top" title=""
+			/>
+		</div>
+		<ul class="page-sidebar-menu page-sidebar-menu-closed" data-keep-expanded="true" data-auto-scroll="true" data-slide-speed="200">
+			<li ng-repeat="item in sitemaps" ng-if="item.privileges.length>0" class="" data-keep-expand="true" ng-class="{true:'nav-item', false:'nav-item'}[item.strUrl==null]">
+				<a ng-href="{{item.strUrl}}" class="level1" ng-class="{true:'nav-link nav-toggle ', false:'nav-link'}[item.childrent.length>0]">
+					<i class="{{item.attributes | attrFilter:'SITEMAP_ICON'}}"></i>
+					<span class="title" ng-bind="item.strName"></span>
+					<span ng-show="item.childrent.length>0" class="" ng-class="{true:'arrow open', false:'n'}[item.childrent.length>0]"></span>
+				</a>
+				<ul ng-show="item.childrent.length>0" class="sub-menu">
+					<li ng-repeat="subitem in item.childrent" ng-if="item.privileges.length>0" class="" data-keep-expand="true" ng-class="{true:'nav-item', false:'nav-item'}[subitem.strUrl==null]">
+						<a ng-href="{{subitem.strUrl}}" class="level1" ng-class="{true:'nav-link nav-toggle ', false:'nav-link'}[subitem.childrent.length>0]">
+							<i class="{{subitem.attributes | attrFilter:'SITEMAP_ICON'}}"></i>
+							<span class="title" ng-bind="subitem.strName"></span>
+							<span ng-show="subitem.childrent.length>0" class="" ng-class="{true:'arrow open', false:'n'}[subitem.childrent.length>0]"></span>
+						</a>
+						<ul ng-show="subitem.childrent.length>0" class="sub-menu">
+							<li class="nav-item " ng-repeat="subitem1 in subitem.childrent" id="{{'navitem-'+subitem1.id}}" ng-init="active_nav(subitem1)" ng-if="subitem.privileges.length>0" ng-class="{true:'active', false:''}[subitem1.strUrl==currentPath]">
+								<a ng-href="{{subitem1.strUrl}}" class="nav-link ">
+									<i class="{{subitem1.attributes | attrFilter:'SITEMAP_ICON'}}"></i>
+									<span class="title">{{subitem1.strName}}</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
+

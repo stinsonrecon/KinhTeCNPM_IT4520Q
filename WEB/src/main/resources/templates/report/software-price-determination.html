@@ -1,0 +1,865 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:include="layout/layout :: layout">
+<head th:include="layout/layout :: header">
+    <title id="pageTitle">BẢNG XÁC ĐỊNH GIÁ PHẦN MỀM</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="page-content" th:fragment="content">
+    <script src="/view/report/software-price-determination.js"
+            type="text/javascript"></script>
+    <div ng-controller="ctr-softwarePriceDetermination" id="contentMain"
+         class="ng-cloak">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-plus font-orange"></i> <span
+                        class="caption-subject font-orange bold uppercase"
+                        translate="hust.softwarePriceDetermination.title"> </span>
+                </div>
+            </div>
+
+            <div class="portlet-body form">
+                <form name="frm_softwarePriceDetermination" class="form-horizontal form-bordered"
+                      method="post" ng-validate="validationOptions">
+                    <div class="form-body">
+                        <div class="tab-content" style="padding-top: 0">
+                            <div class="tab-pane active" id="tab_5_1">
+                                <fieldset class="fieldset-primary" style="padding: 0.3em 0.2em 0.2em 0.3em !important;" ng-disabled="stateForm !== 'DEFAULT'">
+                                    <legend class="lengend-primary">
+                                        <b translate="hust.softwarePriceDetermination.label.titleSearch"></b>
+                                    </legend>
+                                    <!--BẢNG TÍNH TOÁN ĐIỂM CÁC TÁC NHÂN (ACTORS) TƯƠNG TÁC START-->
+                                    <!--Output: TAW-->
+                                    <div class="form-group" id="actorType" ng-hide="!hiddenTree">
+                                        <uib-accordion close-others="true">
+                                            <div uib-accordion-group="" class="panel-default"
+                                                 heading="{{actorTitle}}" is-open="true">
+                                                <div class="form-group">
+                                                    <div class="form-group">
+                                                        <!--Số trường hợp sử dụng:Đơn giản-->
+                                                        <div class="col-md-4">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.softwarePriceDetermination.label.easy">
+                                                                </label>
+                                                                <span style="color: red">(*)</span>
+                                                            </label>
+                                                            <input type="text" class="form-control"
+                                                                   only-digits=""
+                                                                   maxlength="11"
+                                                                   ng-model="model.easy"
+                                                                   name="easy"
+                                                                   id="easy"
+                                                                   style="padding-left: 5px; width: 100%;"/>
+                                                        </div>
+
+                                                        <!--Số trường hợp sử dụng:Trung bình-->
+                                                        <div class="col-md-4">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.softwarePriceDetermination.label.medium">
+                                                                </label>
+                                                                <span style="color: red">(*)</span>
+                                                            </label>
+                                                            <input type="text" class="form-control"
+                                                                   only-digits=""
+                                                                   maxlength="11"
+                                                                   ng-model="model.medium"
+                                                                   name="medium"
+                                                                   id="medium"
+                                                                   style="padding-left: 5px; width: 100%;"/>
+                                                        </div>
+
+                                                        <!--Số trường hợp sử dụng:Phức tạp-->
+                                                        <div class="col-md-4">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.softwarePriceDetermination.label.hard">
+                                                                </label>
+                                                                <span style="color: red">(*)</span>
+                                                            </label>
+                                                            <input type="text" class="form-control"
+                                                                   only-digits=""
+                                                                   maxlength="11"
+                                                                   ng-model="model.hard"
+                                                                   name="hard"
+                                                                   id="hard"
+                                                                   style="padding-left: 5px; width: 100%;"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </uib-accordion>
+                                    </div>
+                                    <!--BẢNG TÍNH TOÁN ĐIỂM CÁC TÁC NHÂN (ACTORS) TƯƠNG TÁC END-->
+
+                                    <!--BẢNG TÍNH TOÁN ĐIỂM CÁC TRƯỜNG HỢP SỬ DỤNG START-->
+                                    <!--Output: TBF-->
+                                    <div class="form-group" id="useCaseGroup" ng-hide="!hiddenTree">
+                                        <uib-accordion close-others="true">
+                                            <div uib-accordion-group="" class="panel-default"
+                                                 heading="{{useCaseGroupTitle}}" is-open="true">
+                                                <div class="form-group">
+                                                    <!--Hệ số B-->
+                                                    <uib-accordion close-others="true">
+                                                        <div uib-accordion-group="" class="panel-default"
+                                                             heading="{{heSoB}}" is-open="true"
+                                                             style=" margin-left: 10px;margin-right: 10px;margin-top: 10px">
+                                                            <div class="form-group">
+                                                                <div class="form-group">
+                                                                    <!--Số trường hợp sử dụng:Đơn giản-->
+                                                                    <div class="col-md-4">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.easy">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="text" class="form-control"
+                                                                               only-digits=""
+                                                                               maxlength="11"
+                                                                               ng-model="model.easyB"
+                                                                               name="easyB"
+                                                                               id="easyB"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+
+                                                                    <!--Số trường hợp sử dụng:Trung bình-->
+                                                                    <div class="col-md-4">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.medium">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="text" class="form-control"
+                                                                               only-digits=""
+                                                                               maxlength="11"
+                                                                               ng-model="model.mediumB"
+                                                                               name="mediumB"
+                                                                               id="mediumB"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+
+                                                                    <!--Số trường hợp sử dụng:Phức tạp-->
+                                                                    <div class="col-md-4">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.hard">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="text" class="form-control"
+                                                                               only-digits=""
+                                                                               maxlength="11"
+                                                                               ng-model="model.hardB"
+                                                                               name="hardB"
+                                                                               id="hardB"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </uib-accordion>
+
+                                                    <!--Hệ số M-->
+                                                    <uib-accordion close-others="true">
+                                                        <div uib-accordion-group="" class="panel-default"
+                                                             heading="{{heSoM}}" is-open="true"
+                                                             style=" margin-left: 10px;margin-right: 10px;margin-top: 10px">
+                                                            <div class="form-group">
+                                                                <div class="form-group">
+                                                                    <!--Số trường hợp sử dụng:Đơn giản-->
+                                                                    <div class="col-md-4">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.easy">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="text" class="form-control"
+                                                                               only-digits=""
+                                                                               maxlength="11"
+                                                                               ng-model="model.easyM"
+                                                                               name="easyM"
+                                                                               id="easyM"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+
+                                                                    <!--Số trường hợp sử dụng:Trung bình-->
+                                                                    <div class="col-md-4">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.medium">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="text" class="form-control"
+                                                                               only-digits=""
+                                                                               maxlength="11"
+                                                                               ng-model="model.mediumM"
+                                                                               name="mediumM"
+                                                                               id="mediumM"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+
+                                                                    <!--Số trường hợp sử dụng:Phức tạp-->
+                                                                    <div class="col-md-4">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.hard">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="text" class="form-control"
+                                                                               only-digits=""
+                                                                               maxlength="11"
+                                                                               ng-model="model.hardM"
+                                                                               name="hardM"
+                                                                               id="hardM"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </uib-accordion>
+
+                                                    <!--Hệ số T-->
+                                                    <uib-accordion close-others="true">
+                                                        <div uib-accordion-group="" class="panel-default"
+                                                             heading="{{heSoT}}" is-open="true"
+                                                             style=" margin-left: 10px;margin-right: 10px;margin-top: 10px">
+                                                            <div class="form-group">
+                                                                <div class="form-group">
+                                                                    <!--Số trường hợp sử dụng:Đơn giản-->
+                                                                    <div class="col-md-4">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.easy">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="text" class="form-control"
+                                                                               only-digits=""
+                                                                               maxlength="11"
+                                                                               ng-model="model.easyT"
+                                                                               name="easyT"
+                                                                               id="easyT"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+
+                                                                    <!--Số trường hợp sử dụng:Trung bình-->
+                                                                    <div class="col-md-4">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.medium">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="text" class="form-control"
+                                                                               only-digits=""
+                                                                               maxlength="11"
+                                                                               ng-model="model.mediumT"
+                                                                               name="mediumT"
+                                                                               id="mediumT"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+
+                                                                    <!--Số trường hợp sử dụng:Phức tạp-->
+                                                                    <div class="col-md-4">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.hard">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="text" class="form-control"
+                                                                               only-digits=""
+                                                                               maxlength="11"
+                                                                               ng-model="model.hardT"
+                                                                               name="hardT"
+                                                                               id="hardT"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </uib-accordion>
+                                                </div>
+                                            </div>
+                                        </uib-accordion>
+                                    </div>
+                                    <!--BẢNG TÍNH TOÁN ĐIỂM CÁC TRƯỜNG HỢP SỬ DỤNG END-->
+
+                                    <!--BẢNG TÍNH TOÁN HỆ SỐ PHỨC TẠP KỸ THUẬT-CÔNG NGHỆ START-->
+                                    <!--Output: TCF-->
+                                    <div class="form-group" id="technologyComprehensionGroup" ng-hide="!hiddenTree">
+                                        <uib-accordion close-others="true">
+                                            <div uib-accordion-group="" class="panel-default"
+                                                 heading="{{technologyComprehensionTitle}}" is-open="true">
+                                                <div class="form-group">
+                                                    <div class="form-group">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.softwarePriceDetermination.label.heThongPhanTan">
+                                                                </label>
+                                                            </label>
+                                                            <ui-select ng-model="model.heThongPhanTan" class=""
+                                                                       style="width:100%;"
+                                                                       name="heThongPhanTan">
+                                                                <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                                <ui-select-choices
+                                                                        repeat="x.code as x in likert | filter:$select.search">
+                                                                    <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                            </ui-select>
+                                                        </div>
+
+                                                        <div class="col-md-3">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.softwarePriceDetermination.label.dapUngTucThoi">
+                                                                </label>
+                                                            </label>
+                                                            <ui-select ng-model="model.dapUngTucThoi" class=""
+                                                                       style="width:100%;"
+                                                                       name="dapUngTucThoi">
+                                                                <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                                <ui-select-choices
+                                                                        repeat="x.code as x in likert | filter:$select.search">
+                                                                    <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                            </ui-select>
+                                                        </div>
+
+                                                        <div class="col-md-3">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.softwarePriceDetermination.label.suDungTrucTuyen">
+                                                                </label>
+                                                            </label>
+                                                            <ui-select ng-model="model.suDungTrucTuyen" class=""
+                                                                       style="width:100%;"
+                                                                       name="suDungTrucTuyen">
+                                                                <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                                <ui-select-choices
+                                                                        repeat="x.code as x in likert | filter:$select.search">
+                                                                    <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                            </ui-select>
+                                                        </div>
+
+                                                        <div class="col-md-3">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.softwarePriceDetermination.label.xuLyBenTrong">
+                                                                </label>
+                                                            </label>
+                                                            <ui-select ng-model="model.xuLyBenTrong" class=""
+                                                                       style="width:100%;"
+                                                                       name="xuLyBenTrong">
+                                                                <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                                <ui-select-choices
+                                                                        repeat="x.code as x in likert | filter:$select.search">
+                                                                    <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                            </ui-select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.softwarePriceDetermination.label.taiSuDung">
+                                                                </label>
+                                                            </label>
+                                                            <ui-select ng-model="model.taiSuDung" class=""
+                                                                       style="width:100%;"
+                                                                       name="taiSuDung">
+                                                                <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                                <ui-select-choices
+                                                                        repeat="x.code as x in likert | filter:$select.search">
+                                                                    <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                            </ui-select>
+                                                        </div>
+
+                                                        <div class="col-md-3">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.softwarePriceDetermination.label.deCaiDat">
+                                                                </label>
+                                                            </label>
+                                                            <ui-select ng-model="model.deCaiDat" class=""
+                                                                       style="width:100%;"
+                                                                       name="deCaiDat">
+                                                                <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                                <ui-select-choices
+                                                                        repeat="x.code as x in likert | filter:$select.search">
+                                                                    <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                            </ui-select>
+                                                        </div>
+
+                                                        <div class="col-md-3">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.softwarePriceDetermination.label.deSuDung">
+                                                                </label>
+                                                            </label>
+                                                            <ui-select ng-model="model.deSuDung" class=""
+                                                                       style="width:100%;"
+                                                                       name="deSuDung">
+                                                                <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                                <ui-select-choices
+                                                                        repeat="x.code as x in likert | filter:$select.search">
+                                                                    <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                            </ui-select>
+                                                        </div>
+
+                                                        <div class="col-md-3">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.softwarePriceDetermination.label.khaNangChuyenDoi">
+                                                                </label>
+                                                            </label>
+                                                            <ui-select ng-model="model.khaNangChuyenDoi" class=""
+                                                                       style="width:100%;"
+                                                                       name="khaNangChuyenDoi">
+                                                                <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                                <ui-select-choices
+                                                                        repeat="x.code as x in likert | filter:$select.search">
+                                                                    <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                            </ui-select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.softwarePriceDetermination.label.deThayDoi">
+                                                                </label>
+                                                            </label>
+                                                            <ui-select ng-model="model.deThayDoi" class=""
+                                                                       style="width:100%;"
+                                                                       name="deThayDoi">
+                                                                <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                                <ui-select-choices
+                                                                        repeat="x.code as x in likert | filter:$select.search">
+                                                                    <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                            </ui-select>
+                                                        </div>
+
+                                                        <div class="col-md-3">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.softwarePriceDetermination.label.suDungDongThoi">
+                                                                </label>
+                                                            </label>
+                                                            <ui-select ng-model="model.suDungDongThoi" class=""
+                                                                       style="width:100%;"
+                                                                       name="suDungDongThoi">
+                                                                <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                                <ui-select-choices
+                                                                        repeat="x.code as x in likert | filter:$select.search">
+                                                                    <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                            </ui-select>
+                                                        </div>
+
+                                                        <div class="col-md-3">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.softwarePriceDetermination.label.baoMatDacBiet">
+                                                                </label>
+                                                            </label>
+                                                            <ui-select ng-model="model.baoMatDacBiet" class=""
+                                                                       style="width:100%;"
+                                                                       name="deSuDung">
+                                                                <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                                <ui-select-choices
+                                                                        repeat="x.code as x in likert | filter:$select.search">
+                                                                    <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                            </ui-select>
+                                                        </div>
+
+                                                        <div class="col-md-3">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.softwarePriceDetermination.label.truyCapTrucTiep">
+                                                                </label>
+                                                            </label>
+                                                            <ui-select ng-model="model.truyCapTrucTiep" class=""
+                                                                       style="width:100%;"
+                                                                       name="truyCapTrucTiep">
+                                                                <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                                <ui-select-choices
+                                                                        repeat="x.code as x in likert | filter:$select.search">
+                                                                    <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                            </ui-select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label ">
+                                                                <label
+                                                                        translate="hust.softwarePriceDetermination.label.daoTaoDacBiet">
+                                                                </label>
+                                                            </label>
+                                                            <ui-select ng-model="model.daoTaoDacBiet" class=""
+                                                                       style="width:100%;"
+                                                                       name="daoTaoDacBiet">
+                                                                <ui-select-match title="{{$select.selected.value}}">{{$select.selected.value}}</ui-select-match>
+                                                                <ui-select-choices
+                                                                        repeat="x.code as x in likert | filter:$select.search">
+                                                                    <span  title="{{x.value}}">{{x.value}}</span></ui-select-choices>
+                                                            </ui-select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </uib-accordion>
+                                    </div>
+                                    <!--BẢNG TÍNH TOÁN HỆ SỐ PHỨC TẠP KỸ THUẬT-CÔNG NGHỆ END-->
+
+                                    <!--HỆ SỐ PTMT-KN-NỘI SUY START-->
+                                    <!--Output: EFW, EF, ES, P-->
+                                    <div class="form-group" id="noiSuyGroup" ng-hide="!hiddenTree">
+                                        <uib-accordion close-others="true">
+                                            <div uib-accordion-group="" class="panel-default"
+                                                 heading="{{noiSuyTitle}}" is-open="true">
+                                                <div class="form-group">
+                                                    <!--Đánh giá cho từng thành viên-->
+                                                    <uib-accordion close-others="true">
+                                                        <div uib-accordion-group="" class="panel-default"
+                                                             heading="{{memberStat}}" is-open="true"
+                                                             style=" margin-left: 10px;margin-right: 10px;margin-top: 10px">
+                                                            <div class="form-group">
+                                                                <div class="form-group">
+                                                                    <!--Áp dụng quy trình phát triển phần mềm theo mẫu RUP-->
+                                                                    <div class="col-md-4">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.followOrder">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="number" class="form-control"
+                                                                               maxlength="11"
+                                                                               min="0"
+                                                                               max="5"
+                                                                               step="any"
+                                                                               ng-model="model.followOrder"
+                                                                               name="followOrder"
+                                                                               id="followOrder"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+
+                                                                    <!--Có kinh nghiệm về ứng dụng tương tự-->
+                                                                    <div class="col-md-4">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.experience">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="number" class="form-control"
+                                                                               maxlength="11"
+                                                                               min="0"
+                                                                               max="5"
+                                                                               ng-model="model.experience"
+                                                                               name="experience"
+                                                                               id="experience"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+
+                                                                    <!--Có kinh nghiệm về hướng đối tượng-->
+                                                                    <div class="col-md-4">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.oopExperience">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="number" class="form-control"
+                                                                               maxlength="11"
+                                                                               min="0"
+                                                                               max="5"
+                                                                               ng-model="model.oopExperience"
+                                                                               name="oopExperience"
+                                                                               id="oopExperience"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <!--Có khả năng lãnh đạo Nhóm-->
+                                                                    <div class="col-md-4">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.leaderExperience">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="number" class="form-control"
+                                                                               maxlength="11"
+                                                                               min="0"
+                                                                               max="5"
+                                                                               ng-model="model.leaderExperience"
+                                                                               name="leaderExperience"
+                                                                               id="leaderExperience"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+
+                                                                    <!--Tính chất năng động-->
+                                                                    <div class="col-md-4">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.motivate">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="number" class="form-control"
+                                                                               maxlength="11"
+                                                                               min="0"
+                                                                               max="5"
+                                                                               ng-model="model.motivate"
+                                                                               name="motivate"
+                                                                               id="motivate"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </uib-accordion>
+
+                                                    <!--Đánh giá chung cho Dự án-->
+                                                    <uib-accordion close-others="true">
+                                                        <div uib-accordion-group="" class="panel-default"
+                                                             heading="{{projectStat}}" is-open="true"
+                                                             style=" margin-left: 10px;margin-right: 10px;margin-top: 10px">
+                                                            <div class="form-group">
+                                                                <div class="form-group">
+                                                                    <!--Độ ổn định của các yêu cầu-->
+                                                                    <div class="col-md-4">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.stable">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="number" class="form-control"
+                                                                               maxlength="11"
+                                                                               min="0"
+                                                                               max="5"
+                                                                               ng-model="model.stable"
+                                                                               name="stable"
+                                                                               id="stable"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+
+                                                                    <!--Sử dụng các nhân viên làm bán thời gian-->
+                                                                    <div class="col-md-4">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.partTimeUsage">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="number" class="form-control"
+                                                                               maxlength="11"
+                                                                               min="0"
+                                                                               max="5"
+                                                                               ng-model="model.partTimeUsage"
+                                                                               name="partTimeUsage"
+                                                                               id="partTimeUsage"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+
+                                                                    <!--Dùng ngôn ngữ lập trình loại khó-->
+                                                                    <div class="col-md-4">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.hardCode">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="number" class="form-control"
+                                                                               maxlength="11"
+                                                                               min="0"
+                                                                               max="5"
+                                                                               ng-model="model.hardCode"
+                                                                               name="hardCode"
+                                                                               id="hardCode"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </uib-accordion>
+                                                </div>
+                                            </div>
+                                        </uib-accordion>
+                                    </div>
+                                    <!--HỆ SỐ PTMT-KN-NỘI SUY END-->
+
+                                    <!--BẢNG TÍNH LƯƠNG BÌNH QUÂN / NGƯỜI/ GIỜ START-->
+                                    <!--Output: Mức lương lao động bình quân (H)-->
+                                    <div class="form-group" id="salaryGroup" ng-hide="!hiddenTree">
+                                        <uib-accordion close-others="true">
+                                            <div uib-accordion-group="" class="panel-default"
+                                                 heading="{{salaryTitle}}" is-open="true">
+                                                <div class="form-group">
+                                                    <!--Mức lương 1-->
+                                                    <uib-accordion close-others="true">
+                                                        <div uib-accordion-group="" class="panel-default"
+                                                             heading="{{salary1Title}}" is-open="true"
+                                                             style=" margin-left: 10px;margin-right: 10px;margin-top: 10px">
+                                                            <div class="form-group">
+                                                                <div class="form-group">
+                                                                    <!--Mức lương-->
+                                                                    <div class="col-md-6">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.salary">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="text" class="form-control"
+                                                                               format-currency=""
+                                                                               ng-model="model.salary1"
+                                                                               name="salary1"
+                                                                               id="salary1"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+
+                                                                    <!--Số cán bộ-->
+                                                                    <div class="col-md-6">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.staffNum">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="text" class="form-control"
+                                                                               only-digits=""
+                                                                               maxlength="11"
+                                                                               ng-model="model.staffNum1"
+                                                                               name="staffNum1"
+                                                                               id="staffNum1"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </uib-accordion>
+
+                                                    <!--Mức lương 2-->
+                                                    <uib-accordion close-others="true">
+                                                        <div uib-accordion-group="" class="panel-default"
+                                                             heading="{{salary2Title}}" is-open="true"
+                                                             style=" margin-left: 10px;margin-right: 10px;margin-top: 10px">
+                                                            <div class="form-group">
+                                                                <div class="form-group">
+                                                                    <!--Mức lương-->
+                                                                    <div class="col-md-6">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.salary">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="text" class="form-control"
+                                                                               format-currency=""
+                                                                               ng-model="model.salary2"
+                                                                               name="salary2"
+                                                                               id="salary2"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+
+                                                                    <!--Số cán bộ-->
+                                                                    <div class="col-md-6">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.staffNum">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="text" class="form-control"
+                                                                               only-digits=""
+                                                                               maxlength="11"
+                                                                               ng-model="model.staffNum2"
+                                                                               name="staffNum2"
+                                                                               id="staffNum2"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </uib-accordion>
+
+                                                    <!--Mức lương 3-->
+                                                    <uib-accordion close-others="true">
+                                                        <div uib-accordion-group="" class="panel-default"
+                                                             heading="{{salary3Title}}" is-open="true"
+                                                             style=" margin-left: 10px;margin-right: 10px;margin-top: 10px">
+                                                            <div class="form-group">
+                                                                <div class="form-group">
+                                                                    <!--Mức lương-->
+                                                                    <div class="col-md-6">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.salary">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="text" class="form-control"
+                                                                               format-currency=""
+                                                                               ng-model="model.salary3"
+                                                                               name="salary3"
+                                                                               id="salary3"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+
+                                                                    <!--Số cán bộ-->
+                                                                    <div class="col-md-6">
+                                                                        <label class="control-label ">
+                                                                            <label
+                                                                                    translate="hust.softwarePriceDetermination.label.staffNum">
+                                                                            </label>
+                                                                            <span style="color: red">(*)</span>
+                                                                        </label>
+                                                                        <input type="text" class="form-control"
+                                                                               only-digits=""
+                                                                               maxlength="11"
+                                                                               ng-model="model.staffNum3"
+                                                                               name="staffNum3"
+                                                                               id="staffNum3"
+                                                                               style="padding-left: 5px; width: 100%;"/>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </uib-accordion>
+                                                </div>
+                                            </div>
+                                        </uib-accordion>
+                                    </div>
+                                    <!--BẢNG TÍNH LƯƠNG BÌNH QUÂN / NGƯỜI/ GIỜ END-->
+
+                                    <!--Button-->
+                                    <div class="form-actions" style="padding: 7px;border-top:none">
+                                        <div class="col-md-12" style="text-align: center;">
+                                            <button type="button" class="btn btn-primary" ng-click="actionSearch()">
+                                                <i class="fa fa-search"></i> <span
+                                                    translate="hust.softwarePriceDetermination.button.toExcel"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

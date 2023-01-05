@@ -1,0 +1,100 @@
+<div class="modal-header" style="height: 50px">
+	<button type="button" class="close red" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">×</button>
+	<h3 class="modal-title" id="modal-title">Thông báo</h3>
+</div>
+<div class="modal-body" id="modal-body" style="padding: 5px;">
+	<div class="mt-element-list list-shop" style="max-height: 200px; overflow: auto">
+		<span>Phiên làm việc của bạn sắp hết hạn</span> </br> </br> <span>Phiên làm việc của bạn sẽ hết hạn do không hoạt động hoặc thời gian đăng ký sắp hết. Nếu bạn
+			muốn tiếp tục sử dụng chương trình, vui lòng nhấp vào nút bên dưới.</span> </br> </br> <span>Phiên của bạn sẽ hết hạn sau: </span><span id="timer"></span>
+	</div>
+</div>
+<div class="modal-footer">
+	<a onclick="canceltime()" class="btn btn-sm" style="background-color: #DD011DFF; color: black" href="#"> <i class="glyphicon glyphicon-time"></i> Gia hạn
+	</a> <a ng-click="next();" class="btn btn-sm" style="visibility: hidden" href="javascript:;" id="expire"> <i class="glyphicon glyphicon-time"></i>
+	</a>
+
+</div>
+
+<script>
+	var counter = 0;
+	var countDown;
+	var interval = null;
+	function startTimer(duration, display) {
+		var timer = duration, minutes, seconds;
+		interval = setInterval(function() {
+			minutes = parseInt(timer / 60, 10)
+			seconds = parseInt(timer % 60, 10);
+
+			minutes = minutes < 10 ? "0" + minutes : minutes;
+			seconds = seconds < 10 ? "0" + seconds : seconds;
+
+			display.textContent = minutes + ":" + seconds;
+
+			if (--timer <= 0) {
+				// window.location.replace('/account/login')
+				window.location.replace('/testForm')
+			}
+		}, 1000);
+	}
+
+	function canceltime() {
+		clearInterval(interval);
+		document.getElementById('expire').click();
+	}
+
+	if (counter == 0) {
+		var oneMinute = 120, display = document.querySelector('#timer');
+		countDown = startTimer(oneMinute, display);
+		counter++;
+	} else {
+		counter++;
+	}
+</script>
+
+<style>
+.list-shop {
+	
+}
+
+.list-shop .list-simple.ext-1.mt-list-container ul>.mt-list-item {
+	padding: 2px;
+	border-color: #90ffce #409fff #e7ecf1;
+}
+
+.list-shop .list-simple.ext-1.mt-list-container ul>.mt-list-item>.list-icon-container-mod {
+	padding-top: 2px;
+}
+
+.list-shop .list-simple.mt-list-container ul>.mt-list-item>.list-item-content {
+	padding: 0 5px 0 25px;
+}
+
+.list-shop .list-simple.mt-list-container ul>.mt-list-item>.list-item-content>h6>a:hover {
+	color: #DD011DFF;
+}
+
+.list-shop .list-simple.mt-list-container ul>.mt-list-item:hover>.list-item-content>h6>a {
+	color: #DD011DFF;
+}
+
+.list-shop .list-simple.ext-1.mt-list-container ul>.mt-list-item:hover {
+	border-color: #90ffce #DD011DFF #e7ecf1;
+	cursor: pointer;
+}
+
+.list-shop .list-simple.ext-1.mt-list-container ul>.mt-list-item:hover i {
+	color: #DD011DFF;
+}
+
+.list-shop .list-simple.ext-1.mt-list-container ul>.mt-list-item.item-checked  i {
+	color: #DD011DFF;
+}
+
+.list-shop  .list-simple.ext-1.mt-list-container ul>.mt-list-item.item-checked {
+	border-color: #90ffce #DD011DFF #e7ecf1;
+}
+
+.list-shop  .list-simple.mt-list-container ul>.mt-list-item.item-checked>.list-item-content>h6>a {
+	color: #DD011DFF;
+}
+</style>

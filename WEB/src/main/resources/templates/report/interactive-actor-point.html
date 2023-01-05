@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:include="layout/layout :: layout">
+<head th:include="layout/layout :: header">
+  <title id="pageTitle">BẢNG TÍNH TOÁN ĐIỂM CÁC TÁC NHÂN (ACTORS) TƯƠNG TÁC</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="page-content" th:fragment="content">
+  <script src="/view/report/interactive-actor-point.js"
+          type="text/javascript"></script>
+  <div ng-controller="ctr-interactiveActorPoint" id="contentMain"
+       class="ng-cloak">
+    <div class="portlet light bordered">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-plus font-orange"></i> <span
+                class="caption-subject font-orange bold uppercase"
+                translate="hust.interactiveActorPoint.title"> </span>
+        </div>
+      </div>
+
+      <div class="portlet-body form">
+        <form name="frm_interactiveActorPoint" class="form-horizontal form-bordered"
+              method="post" ng-validate="validationOptions">
+          <div class="form-body">
+            <div class="tab-content" style="padding-top: 0">
+              <div class="tab-pane active" id="tab_5_1">
+                <fieldset class="fieldset-primary" style="padding: 0.3em 0.2em 0.2em 0.3em !important;" ng-disabled="stateForm !== 'DEFAULT'">
+                  <legend class="lengend-primary">
+                    <b translate="hust.interactiveActorPoint.label.titleSearch"></b>
+                  </legend>
+                  <div class="form-group" id="actorType" ng-hide="!hiddenTree">
+                    <uib-accordion close-others="true">
+                      <div uib-accordion-group="" class="panel-default"
+                           heading="{{actorTitle}}" is-open="true">
+                        <div class="form-group">
+                          <div class="form-group">
+                            <!--Số trường hợp sử dụng:Đơn giản-->
+                            <div class="col-md-4">
+                              <label class="control-label ">
+                                <label
+                                        translate="hust.interactiveActorPoint.label.easy">
+                                </label>
+                                <span style="color: red">(*)</span>
+                              </label>
+                              <input type="text" class="form-control"
+                                     only-digits=""
+                                     maxlength="11"
+                                     ng-model="model.easy"
+                                     name="easy"
+                                     id="easy"
+                                     style="padding-left: 5px; width: 100%;"/>
+                            </div>
+
+                            <!--Số trường hợp sử dụng:Trung bình-->
+                            <div class="col-md-4">
+                              <label class="control-label ">
+                                <label
+                                        translate="hust.interactiveActorPoint.label.medium">
+                                </label>
+                                <span style="color: red">(*)</span>
+                              </label>
+                              <input type="text" class="form-control"
+                                     only-digits=""
+                                     maxlength="11"
+                                     ng-model="model.medium"
+                                     name="medium"
+                                     id="medium"
+                                     style="padding-left: 5px; width: 100%;"/>
+                            </div>
+
+                            <!--Số trường hợp sử dụng:Phức tạp-->
+                            <div class="col-md-4">
+                              <label class="control-label ">
+                                <label
+                                        translate="hust.interactiveActorPoint.label.hard">
+                                </label>
+                                <span style="color: red">(*)</span>
+                              </label>
+                              <input type="text" class="form-control"
+                                     only-digits=""
+                                     maxlength="11"
+                                     ng-model="model.hard"
+                                     name="hard"
+                                     id="hard"
+                                     style="padding-left: 5px; width: 100%;"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </uib-accordion>
+                  </div>
+
+                  <!--Button-->
+                  <div class="form-actions" style="padding: 7px;border-top:none">
+                    <div class="col-md-12" style="text-align: center;">
+                      <button type="button" class="btn btn-primary" ng-click="actionSearch()">
+                        <i class="fa fa-search"></i> <span
+                              translate="hust.interactiveActorPoint.button.toExcel"></span>
+                      </button>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

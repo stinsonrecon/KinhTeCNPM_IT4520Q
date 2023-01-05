@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org" th:include="layout/layout :: layout">
+<head th:include="layout/layout :: header">
+
+<title id="pageTitle">Welcome</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+
+	<div class="page-content" th:fragment="content">
+		<script src="/views/home/controller.js?rel=1" type="text/javascript"></script>
+		<div class="" ng-controller="ctrl-home">
+
+
+			<div class="" data-action="ACCESS">
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" data-action="ACCESS">
+					<a class="dashboard-stat dashboard-stat-v2 blue" href="#">
+						<div class="visual">
+							<i class="fa fa-comments"></i>
+						</div>
+						<div class="details">
+							<div class="number">
+								<span data-counter="counterup" data-value="1349">1</span>
+							</div>
+							<div class="desc">ACCESS</div>
+						</div>
+					</a>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" data-action="ACCESS">
+					<a class="dashboard-stat dashboard-stat-v2 red" href="#">
+						<div class="visual">
+							<i class="fa fa-bar-chart-o"></i>
+						</div>
+						<div class="details">
+							<div class="number">2</div>
+							<div class="desc">EXECUTE</div>
+						</div>
+					</a>
+				</div>
+
+
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" data-action="ADD">
+					<a class="dashboard-stat dashboard-stat-v2 red" href="#">
+						<div class="visual">
+							<i class="fa fa-bar-chart-o"></i>
+						</div>
+						<div class="details">
+							<div class="number">3</div>
+							<div class="desc">ADD</div>
+						</div>
+					</a>
+				</div>
+
+			</div>
+
+
+
+
+			<div class="portlet light bordered" data-action="ACCESS">
+				<div class="portlet-title">
+					<div class="caption">
+						<i class="icon-social-dribbble font-orange"></i> <span class="caption-subject font-orange bold uppercase">Simple Table</span>
+					</div>
+					<div class="actions">
+						<a class="btn btn-circle btn-icon-only btn-default" href="javascript:;"> <i class="icon-cloud-upload"></i>
+						</a> <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;"> <i class="icon-wrench"></i>
+						</a> <a class="btn btn-circle btn-icon-only btn-default" href="javascript:;"> <i class="icon-trash"></i>
+						</a>
+					</div>
+				</div>
+				<div class="portlet-body">
+					<div class="table-scrollable">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>First Name</th>
+									<th>Last Name</th>
+									<th>Username</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>Mark</td>
+									<td>Otto</td>
+									<td>makr124</td>
+									<td>
+										<div class="btn-group">
+											<button type="button" class="btn btn-default">Left</button>
+											<button type="button" class="btn btn-default">Middle</button>
+											<button type="button" class="btn btn-default">Right</button>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>Jacob</td>
+									<td>Nilson</td>
+									<td>jac123</td>
+									<td><span class="label label-sm label-info"> Pending </span></td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>Larry</td>
+									<td>Cooper</td>
+									<td>lar</td>
+									<td><span class="label label-sm label-warning"> Suspended </span></td>
+								</tr>
+								<tr>
+									<td>4</td>
+									<td>Sandy</td>
+									<td>Lim</td>
+									<td>sanlim</td>
+									<td><span class="label label-sm label-danger"> Blocked </span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

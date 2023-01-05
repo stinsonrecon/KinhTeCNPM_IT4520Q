@@ -1,0 +1,1 @@
+package vn.com.core.core.dao;//package com.fis.fw.core.dao;////import com.fis.fw.common.generics.GenericDao;//import com.fis.fw.core.entity.LogApi;////import java.util.List;////public interface LogApiDao extends GenericDao<LogApi,Integer> {//    List<LogApi> save(List<LogApi> lst) throws Exception;//}
